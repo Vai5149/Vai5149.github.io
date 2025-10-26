@@ -1,7 +1,14 @@
 <a-scene>
   <!-- Asset Management System-->
   <a-assets>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframeextras@v6.1.0/dist/aframe-extras.min.js"></script>
       <a-asset-item id="dragon" src="./assets/dragon/scene.gltf">
+        <!--Dragon GLTF model-->
+        <a-entity gltf-model="#dragon"
+        scale="1 1 1"
+        animation-mixer
+        position="0.5 1.02 -0.7"
+        ></a-entity>
 </a-asset-item>
 Chapter 10 Deploying 3D Animated Models in AR with A-Frame and GitHub Pages
 309
@@ -10,9 +17,7 @@ Chapter 10 Deploying 3D Animated Models in AR with A-Frame and GitHub Pages
   </a-assets>
    <!--City GLTF model-->
         <a-entity gltf-model="#city"
-        rotation="0 -90 0"
+        rotation="0 270 0"
         scale="0.0005 0.0005 0.0005"
-        position="0 0 0">
+        pposition=".07 1 -.5">
         </a-entity>
-
-  
