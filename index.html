@@ -1,26 +1,28 @@
-<html>
-  <head>
-    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js@3.4.2/aframe/build/aframe-ar.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.0/dist/aframe-extras.min.js"></script>
-  </head>
+<head>
+  <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframeextras@v6.1.0/dist/aframe-extras.min.js"></script>
+</head>
 
-  <body style="margin: 0; overflow: hidden;">
-    <a-scene embedded arjs="sourceType: webcam;">
-      <a-assets>
-        <a-asset-item id="dragon" src="./assets/dragon/scene.gltf"></a-asset-item>
-      </a-assets>
-
-      <!-- Marker Hiro untuk menampilkan model -->
-      <a-marker preset="hiro">
+<body>
+  <a-scene>
+  <!-- Asset Management System-->
+  <a-assets>
+      <a-asset-item id="dragon" src="./assets/dragon/scene.gltf">
+      <a-asset-item id="city" src="./assets/city/scene.gltf">
+  </a-asset-item>
+  </a-assets>
+   <!--City GLTF model-->
         <a-entity gltf-model="#dragon"
-          scale="1 1 1"
-          animation-mixer
-          position="0 0 0">
+        scale="1 1 1"
+        animation-mixer
+        position="0.5 1.02 -0.7">
         </a-entity>
-      </a-marker>
-
-      <a-entity camera></a-entity>
+    
+    <!--Dragon GLTF model-->
+        <a-entity gltf-model="#city"
+        rotation="0 270 0"
+        scale="0.0005 0.0005 0.0005"
+        position=".07 1 -.5">
+        </a-entity>
     </a-scene>
-  </body>
-</html>
+</body>
