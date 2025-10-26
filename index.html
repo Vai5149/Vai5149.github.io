@@ -4,21 +4,24 @@
 </head>
 
 <body>
-  <a-scene>
+  <a-scene
+  embedded
+  arjs="sourceType: webcam; debugUIEnabled: false;">
+
   <!-- Asset Management System-->
   <a-assets>
       <a-asset-item id="dragon" src="./assets/dragon/scene.gltf">
       <a-asset-item id="city" src="./assets/city/scene.gltf">
   </a-asset-item>
   </a-assets>
-    <!--Dragon GLTF model-->
+   <!--City GLTF model-->
         <a-entity gltf-model="#dragon"
         scale="1 1 1"
         animation-mixer
         position="0.5 1.02 -0.7">
         </a-entity>
     
-    <!--City GLTF model-->
+    <!--Dragon GLTF model-->
         <a-entity gltf-model="#city"
         rotation="0 270 0"
         scale="0.0005 0.0005 0.0005"
