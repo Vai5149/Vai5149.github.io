@@ -1,31 +1,82 @@
+<!DOCTYPE html>
+<html lang="id">
 <head>
-  <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframeextras@v6.1.0/dist/aframe-extras.min.js"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>kARies - AR Edukasi Gigi</title>
+  <link rel="stylesheet" href="./ui.css">
 </head>
-
 <body>
-  <a-scene
-  embedded
-  arjs="sourceType: webcam; debugUIEnabled: false;">
+  <!-- XR Button (center top) - SEMULA HIDDEN -->
+  <button id="xrBtn" class="xr-btn hidden">Enter AR</button>
 
-  <!-- Asset Management System-->
-  <a-assets>
-      <a-asset-item id="dragon" src="./assets/dragon/scene.gltf">
-      <a-asset-item id="city" src="./assets/city/scene.gltf">
-  </a-asset-item>
-  </a-assets>
-   <!--City GLTF model-->
-        <a-entity gltf-model="#dragon"
-        scale="1 1 1"
-        animation-mixer
-        position="0.5 1.02 -0.7">
-        </a-entity>
-    
-    <!--Dragon GLTF model-->
-        <a-entity gltf-model="#city"
-        rotation="0 270 0"
-        scale="0.0005 0.0005 0.0005"
-        position=".07 1 -.5">
-        </a-entity>
-    </a-scene>
+  <!-- AR canvas -->
+  <canvas id="canvas"></canvas>
+
+  <!-- UI overlay -->
+  <div id="ui">
+    <!-- NEW: Splash Screen -->
+    <div id="splashScreen">
+      <img src="logoar.png" alt="kARies Logo" id="splashLogo">
+      <button id="startBtn" class="start-btn">Mulai!</button>
+    </div>
+
+    <div id="bars">
+      <div class="status-bar clean">
+        <img src="icons/water.png" class="status-icon" alt="Kebersihan">
+        <span class="status-label">Kebersihan</span>
+        <div class="bar-fill"><div id="cleanFill" class="bar-inner" style="width:100%"></div></div>
+      </div>
+
+      <div class="status-bar health">
+        <img src="icons/heart.png" class="status-icon" alt="Kesehatan">
+        <span class="status-label">Kesehatan</span>
+        <div class="bar-fill"><div id="healthFill" class="bar-inner" style="width:100%"></div></div>
+      </div>
+    </div>
+
+    <!-- Tooth Status -->
+    <div id="toothStatus">
+      <img src="odontogram/odontogram_hilang.png" id="toothStatusIcon" alt="Status Gigi">
+      <div id="toothStatusText">Gigi tidak ada</div>
+    </div>
+
+    <div id="infoText">Tekan Enter AR. Lalu arahkan kamera ke lantai hingga muncul lingkaran hijau dan tekan lingkaran untuk memunculkan gigi!</div>
+
+    <div id="buttons">
+      <button class="action-btn brush" data-action="brush">
+        <img src="icons/sikat.png" alt="Gosok Gigi">
+        <span>Gosok Gigi</span>
+      </button>
+
+      <button class="action-btn healthy" data-action="healthy">
+        <img src="icons/wortel.png" alt="Makanan Sehat">
+        <span>Makanan Sehat</span>
+      </button>
+
+      <button class="action-btn sweet" data-action="sweet">
+        <img src="icons/permen.png" alt="Makanan Manis">
+        <span>Makanan Manis</span>
+      </button>
+    </div>
+
+    <!-- Scale Buttons -->
+    <div id="scaleButtons">
+      <button id="scaleUpBtn" class="scale-btn">Perbesar</button>
+      <button id="scaleDownBtn" class="scale-btn">Perkecil</button>
+    </div>
+
+    <!-- Extra buttons -->
+    <div id="extraButtons">
+      <button id="resetBtn" class="extra-btn">Reset</button>
+      <button id="exitBtn" class="extra-btn">Exit AR</button>
+    </div>
+  </div>
+
+  <!-- UI logic first -->
+  <script src="./ui.js"></script>
+
+  <!-- AR logic (module) -->
+  <script type="module" src="./index.js"></script>
 </body>
+</html>
